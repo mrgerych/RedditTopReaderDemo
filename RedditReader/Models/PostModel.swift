@@ -48,24 +48,24 @@ class PostModel: NSObject, NSCoding {
     }
 
     required init(coder decoder: NSCoder) {
-        postId = decoder.decodeObject(forKey: "postId") as? String ?? ""
-        title = decoder.decodeObject(forKey: "title") as? String ?? ""
-        author = decoder.decodeObject(forKey: "author") as? String ?? ""
-        thumbnail = decoder.decodeObject(forKey: "thumbnail") as? String ?? ""
+        postId = decoder.decodeObject(forKey: "postId") as? String
+        title = decoder.decodeObject(forKey: "title") as? String
+        author = decoder.decodeObject(forKey: "author") as? String
+        thumbnail = decoder.decodeObject(forKey: "thumbnail") as? String
         commentsCount = decoder.decodeInteger(forKey: "commentsCount")
-        postUrl = decoder.decodeObject(forKey: "postUrl") as? String ?? ""
+        postUrl = decoder.decodeObject(forKey: "postUrl") as? String
         date = Date(timeIntervalSince1970: decoder.decodeDouble(forKey: "created_utc"))
-        imageUrl = decoder.decodeObject(forKey: "imageUrl") as? String ?? ""
+        imageUrl = decoder.decodeObject(forKey: "imageUrl") as? String
     }
 
     func encode(with coder: NSCoder) {
-        coder.encode(postId ?? "", forKey: "postId")
-        coder.encode(title ?? "", forKey: "title")
-        coder.encode(author ?? "", forKey: "author")
-        coder.encode(thumbnail ?? "", forKey: "thumbnail")
-        coder.encode(imageUrl ?? "", forKey: "imageUrl")
-        coder.encode(commentsCount ?? 0, forKey: "commentsCount")
-        coder.encode(postUrl ?? "", forKey: "postUrl")
+        coder.encode(postId, forKey: "postId")
+        coder.encode(title, forKey: "title")
+        coder.encode(author, forKey: "author")
+        coder.encode(thumbnail, forKey: "thumbnail")
+        coder.encode(imageUrl, forKey: "imageUrl")
+        coder.encode(commentsCount, forKey: "commentsCount")
+        coder.encode(postUrl, forKey: "postUrl")
         if let timeIntervalSince1970 = date?.timeIntervalSince1970 {
             coder.encode(timeIntervalSince1970, forKey: "created_utc")
         }
