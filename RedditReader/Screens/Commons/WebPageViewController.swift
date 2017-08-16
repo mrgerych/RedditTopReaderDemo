@@ -13,7 +13,7 @@ class WebPageViewController: UIViewController {
     private var postWebView: UIWebView!
     var urlToLoad: URL?
     var wasViewLoaded = false
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = false
@@ -28,13 +28,13 @@ class WebPageViewController: UIViewController {
         postWebView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(postWebView)
     }
-    
+
     override func viewWillLayoutSubviews() {
-        if(!wasViewLoaded){
+        if (!wasViewLoaded) {
             wasViewLoaded = true
-            
-            let viewsDict: [String : Any] = ["postWebView" : postWebView]
-            
+
+            let viewsDict: [String: Any] = ["postWebView": postWebView]
+
             let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[postWebView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewsDict)
             let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|[postWebView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewsDict)
             view.addConstraints(horizontalConstraints)

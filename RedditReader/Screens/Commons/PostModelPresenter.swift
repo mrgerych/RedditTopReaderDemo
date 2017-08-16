@@ -5,6 +5,6 @@
 
 import Foundation
 
-protocol PostModelPresenter : class {
+protocol PostModelPresenter: class {
     func presentDataForPost(_ post: PostModel)
 }

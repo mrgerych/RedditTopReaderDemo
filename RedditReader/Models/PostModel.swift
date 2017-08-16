@@ -55,7 +55,7 @@ class PostModel: NSObject, NSCoding {
         commentsCount = decoder.decodeObject(forKey: "commentsCount") as? Int
         postUrl = decoder.decodeObject(forKey: "postUrl") as? String
         imageUrl = decoder.decodeObject(forKey: "imageUrl") as? String
-        if let timeIntervalSince1970 = decoder.decodeObject(forKey: "created_utc")  as? Double {
+        if let timeIntervalSince1970 = decoder.decodeObject(forKey: "created_utc") as? Double {
             date = Date(timeIntervalSince1970: timeIntervalSince1970)
         } else {
             date = nil
