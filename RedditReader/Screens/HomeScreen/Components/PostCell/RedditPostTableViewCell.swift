@@ -37,11 +37,11 @@ class RedditPostTableViewCell: UITableViewCell {
         self.postModel = postModel
         postTitleLabel.text = postModel.title
         postAuthorLabel.text = postModel.author
-        commetsCountLabel.text = "\(postModel.commentsCount ?? 0)"
+        commetsCountLabel.text = "\(postModel.commentsCount ?? 0) comments"
         postTimeLabel.text = postModel.dateString
 
         guard
-                let thumbString = postModel.thumbnail,
+                let thumbString = postModel.thumbnail, NetworkUtils.verifyUrl(urlString: thumbString),
                 let thumbUrl = URL(string:thumbString) else {
             thumbButton.setImage(#imageLiteral(resourceName: "no-image"), for: .normal)
             return

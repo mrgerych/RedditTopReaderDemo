@@ -9,14 +9,9 @@
 import Foundation
 
 class DateUtils {
-    // Sorry this part take from stackoverflow
+    // Sorry this part from stackoverflow
     static func timeAgoSinceDate(_ date: Date, numericDates: Bool = false) -> String {
-        let calendar = NSCalendar.current
-        let unitFlags: Set<Calendar.Component> = [.minute, .hour, .day, .weekOfYear, .month, .year, .second]
-        let now = Date()
-        let earliest = now < date ? now : date
-        let latest = (earliest == now) ? date : now
-        let components = calendar.dateComponents(unitFlags, from: earliest, to: latest)
+        let components = getDateComponents(date: date)
 
         if (components.year! >= 2) {
             return "\(components.year!) years ago"
@@ -71,6 +66,15 @@ class DateUtils {
         } else {
             return "Just now"
         }
+    }
 
+    private static func getDateComponents(date: Date) -> DateComponents {
+        let calendar = NSCalendar.current
+        let unitFlags: Set<Calendar.Component> = [.minute, .hour, .day, .weekOfYear, .month, .year, .second]
+        let now = Date()
+        let earliest = now < date ? now : date
+        let latest = (earliest == now) ? date : now
+        let components = calendar.dateComponents(unitFlags, from: earliest, to: latest)
+        return components
     }
 }

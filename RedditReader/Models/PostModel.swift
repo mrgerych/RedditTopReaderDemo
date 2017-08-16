@@ -52,10 +52,14 @@ class PostModel: NSObject, NSCoding {
         title = decoder.decodeObject(forKey: "title") as? String
         author = decoder.decodeObject(forKey: "author") as? String
         thumbnail = decoder.decodeObject(forKey: "thumbnail") as? String
-        commentsCount = decoder.decodeInteger(forKey: "commentsCount")
+        commentsCount = decoder.decodeObject(forKey: "commentsCount") as? Int
         postUrl = decoder.decodeObject(forKey: "postUrl") as? String
-        date = Date(timeIntervalSince1970: decoder.decodeDouble(forKey: "created_utc"))
         imageUrl = decoder.decodeObject(forKey: "imageUrl") as? String
+        if let timeIntervalSince1970 = decoder.decodeObject(forKey: "created_utc")  as? Double {
+            date = Date(timeIntervalSince1970: timeIntervalSince1970)
+        } else {
+            date = nil
+        }
     }
 
     func encode(with coder: NSCoder) {

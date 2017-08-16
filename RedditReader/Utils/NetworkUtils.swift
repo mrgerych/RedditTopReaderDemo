@@ -8,6 +8,7 @@
 
 import Foundation
 import SystemConfiguration
+import UIKit
 
 class NetworkUtils {
     static func isInternetAvailable() -> Bool {
@@ -28,5 +29,14 @@ class NetworkUtils {
         let isReachable = flags.contains(.reachable)
         let needsConnection = flags.contains(.connectionRequired)
         return (isReachable && !needsConnection)
+    }
+    
+    static func verifyUrl(urlString: String?) -> Bool {
+        guard let urlString = urlString,
+            let url = URL(string: urlString) else {
+                return false
+        }
+        
+        return UIApplication.shared.canOpenURL(url)
     }
 }
