@@ -1,5 +1,5 @@
 //
-//  PostWebPageViewController.swift
+//  FullImageViewController.swift
 //  RedditReader
 //
 //  Created by ios developer on 8/15/17.
@@ -8,25 +8,12 @@
 
 import UIKit
 
-class PostWebPageViewController: UIViewController {
-
-    @IBOutlet weak var postWebView: UIWebView!
-    var postPageRequest: URLRequest?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.navigationController?.navigationBar.isHidden = false
-        
-        if let request = postPageRequest {
-            self.postWebView.loadRequest(request)
-        }
-    }
+class PostWebPageViewController: WebPageViewController {
 }
 
-extension PostWebPageViewController: PostModelPresenter{
-    func fillWithModel(_ postModel: PostModel) {
-        if let stringUrl = postModel.postUrl, let url = URL(string: stringUrl) {
-                self.postPageRequest = URLRequest(url: url)
-        }
+extension PostWebPageViewController: PostModelPresenter {
+    func presentDataForPost(_ post: PostModel) {
+        guard let postImageUrlString = post.postUrl else { return }
+        self.urlToLoad = URL(string: postImageUrlString)
     }
 }

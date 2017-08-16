@@ -52,19 +52,20 @@ class PostListViewController: UITableViewController {
     @objc func updateData() {
         dataService?.getTopPosts(limit: 50) { [unowned self] posts in
             self.datasourceArray = posts
-            self.tableView.reloadData()
-            self.refreshControl?.endRefreshing()
+            DispatchQueue.main.async() {
+                self.tableView.reloadData()
+                self.refreshControl?.endRefreshing()
+            }
         }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard
-                let postModelPresenter = segue.destination as? PostModelPresenter,
-                let presentingPostModel = presentingPostModel else {
+        guard let postModelPresenter = segue.destination as? PostModelPresenter,
+              let presentingPostModel = presentingPostModel else {
             return
         }
 
-        postModelPresenter.fillWithModel(presentingPostModel)
+        postModelPresenter.presentDataForPost(presentingPostModel)
     }
 }
 

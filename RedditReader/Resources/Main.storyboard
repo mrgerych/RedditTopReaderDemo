@@ -59,23 +59,8 @@
                     <view key="view" contentMode="scaleToFill" id="cOD-eA-KGW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EYq-ei-P92">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="EYq-ei-P92" secondAttribute="trailing" id="H7Y-mT-XJA"/>
-                            <constraint firstItem="EYq-ei-P92" firstAttribute="top" secondItem="cOD-eA-KGW" secondAttribute="top" id="Sm2-Ha-Fqu"/>
-                            <constraint firstItem="NqH-tf-5Kf" firstAttribute="top" secondItem="EYq-ei-P92" secondAttribute="bottom" id="Wji-qo-GFG"/>
-                            <constraint firstItem="EYq-ei-P92" firstAttribute="leading" secondItem="cOD-eA-KGW" secondAttribute="leading" id="m4P-M2-OE9"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="postWebView" destination="EYq-ei-P92" id="lPa-9t-URT"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="isQ-Wa-07E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -92,23 +77,8 @@
                     <view key="view" contentMode="scaleToFill" id="J16-lc-Qsn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QCd-00-uhf">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="QCd-00-uhf" secondAttribute="trailing" id="4hK-2S-fI5"/>
-                            <constraint firstItem="Zs8-Za-JPQ" firstAttribute="top" secondItem="QCd-00-uhf" secondAttribute="bottom" id="DaN-Ap-eC4"/>
-                            <constraint firstItem="QCd-00-uhf" firstAttribute="leading" secondItem="J16-lc-Qsn" secondAttribute="leading" id="nRZ-Le-o7X"/>
-                            <constraint firstItem="QCd-00-uhf" firstAttribute="top" secondItem="J16-lc-Qsn" secondAttribute="top" id="yzz-Tz-6jl"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="fullImageView" destination="QCd-00-uhf" id="wtl-Jy-zBq"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MsP-F3-Rg5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

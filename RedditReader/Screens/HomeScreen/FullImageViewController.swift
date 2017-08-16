@@ -8,22 +8,8 @@
 
 import UIKit
 
-class FullImageViewController: UIViewController {
-    
-    @IBOutlet weak var fullImageView: UIWebView!
-
-    var postPageRequest: URLRequest?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.navigationController?.navigationBar.isHidden = false
-        
-        if let request = postPageRequest {
-            self.fullImageView.loadRequest(request)
-        }
-    }
-    
-    // Nothing to save while using webview to show images
+class FullImageViewController: WebPageViewController {
+        // Nothing to save while using webview to show images
     func storeImageToGallery(image: UIImage) {
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
@@ -37,10 +23,9 @@ class FullImageViewController: UIViewController {
     }
 }
 
-extension FullImageViewController: PostModelPresenter{
-    func fillWithModel(_ postModel: PostModel) {
-        if let stringUrl = postModel.imageUrl, let url = URL(string: stringUrl) {
-            self.postPageRequest = URLRequest(url: url)
-        }
+extension FullImageViewController: PostModelPresenter {
+    func presentDataForPost(_ post: PostModel) {
+        guard let postImageUrlString = post.imageUrl else { return }
+        self.urlToLoad = URL(string: postImageUrlString)
     }
 }

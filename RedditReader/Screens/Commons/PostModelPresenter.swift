@@ -1,13 +1,10 @@
 //
-//  PostModelRepresentation.swift
-//  RedditReader
-//
-//  Created by ios developer on 8/15/17.
-//  Copyright © 2017 ios developer. All rights reserved.
+// Created by ios developer on 8/17/17.
+// Copyright (c) 2017 ios developer. All rights reserved.
 //
 
 import Foundation
 
-protocol PostModelPresenter {
-    func fillWithModel(_ postModel: PostModel)
+protocol PostModelPresenter : class {
+    func presentDataForPost(_ post: PostModel)
 }
