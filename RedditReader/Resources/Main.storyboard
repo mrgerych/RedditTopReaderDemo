@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7fC-dX-Tau">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="1PB-r5-pdw">
+            <objects>
+                <navigationController id="7fC-dX-Tau" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fcZ-ma-XiA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="2rA-wk-vZO" kind="relationship" relationship="rootViewController" id="vzA-0G-Qaj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E5q-S6-TPv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-360" y="170"/>
+        </scene>
+        <!--Post List View Controller-->
+        <scene sceneID="lJK-wQ-HyH">
+            <objects>
+                <tableViewController id="2rA-wk-vZO" customClass="PostListViewController" customModule="RedditReader" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="co2-xc-CEi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="2rA-wk-vZO" id="JbG-oU-O5H"/>
+                            <outlet property="delegate" destination="2rA-wk-vZO" id="odL-44-Tjh"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="yk7-JV-iIE"/>
+                    <connections>
+                        <segue destination="ba5-Vi-Slf" kind="show" identifier="showPostWebPage" id="ea7-pS-qiA"/>
+                        <segue destination="hTC-4F-GVX" kind="show" identifier="showFullImage" id="dOC-dI-VV7"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q9j-1w-X0T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="434" y="170"/>
+        </scene>
+        <!--Post Web Page View Controller-->
+        <scene sceneID="o2f-Bn-xjX">
+            <objects>
+                <viewController id="ba5-Vi-Slf" customClass="PostWebPageViewController" customModule="RedditReader" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oSE-eI-2IT"/>
+                        <viewControllerLayoutGuide type="bottom" id="NqH-tf-5Kf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cOD-eA-KGW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EYq-ei-P92">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="EYq-ei-P92" secondAttribute="trailing" id="H7Y-mT-XJA"/>
+                            <constraint firstItem="EYq-ei-P92" firstAttribute="top" secondItem="cOD-eA-KGW" secondAttribute="top" id="Sm2-Ha-Fqu"/>
+                            <constraint firstItem="NqH-tf-5Kf" firstAttribute="top" secondItem="EYq-ei-P92" secondAttribute="bottom" id="Wji-qo-GFG"/>
+                            <constraint firstItem="EYq-ei-P92" firstAttribute="leading" secondItem="cOD-eA-KGW" secondAttribute="leading" id="m4P-M2-OE9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="postWebView" destination="EYq-ei-P92" id="lPa-9t-URT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="isQ-Wa-07E" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1328.8" y="23.838080959520241"/>
+        </scene>
+        <!--Full Image View Controller-->
+        <scene sceneID="Zob-qz-W2s">
+            <objects>
+                <viewController id="hTC-4F-GVX" customClass="FullImageViewController" customModule="RedditReader" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="e01-CA-GoY"/>
+                        <viewControllerLayoutGuide type="bottom" id="Zs8-Za-JPQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="J16-lc-Qsn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QCd-00-uhf">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="QCd-00-uhf" secondAttribute="trailing" id="4hK-2S-fI5"/>
+                            <constraint firstItem="Zs8-Za-JPQ" firstAttribute="top" secondItem="QCd-00-uhf" secondAttribute="bottom" id="DaN-Ap-eC4"/>
+                            <constraint firstItem="QCd-00-uhf" firstAttribute="leading" secondItem="J16-lc-Qsn" secondAttribute="leading" id="nRZ-Le-o7X"/>
+                            <constraint firstItem="QCd-00-uhf" firstAttribute="top" secondItem="J16-lc-Qsn" secondAttribute="top" id="yzz-Tz-6jl"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="fullImageView" destination="QCd-00-uhf" id="wtl-Jy-zBq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MsP-F3-Rg5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1329" y="686"/>
+        </scene>
+    </scenes>
+</document>
