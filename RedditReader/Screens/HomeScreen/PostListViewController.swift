@@ -37,7 +37,7 @@ class PostListViewController: UITableViewController {
         let networkDataService = NetworkDataService(storageService: userDefaultsStorage)
         let cacheDataService = CacheDataService(dataStorage: userDefaultsStorage)
 
-        dataService = GeneralDataService(networkDataService: networkDataService,
+        dataService = TopPostsDataService(networkDataService: networkDataService,
                 cacheDataService: cacheDataService)
     }
 

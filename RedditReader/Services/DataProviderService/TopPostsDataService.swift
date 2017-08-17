@@ -1,5 +1,5 @@
 //
-//  GeneralDataService.swift
+//  TopPostsDataService.swift
 //  RedditReader
 //
 //  Created by ios developer on 8/15/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GeneralDataService: DataProviderService {
+class TopPostsDataService: DataProviderService {
     let networkDataService: DataProviderService
     let cacheDataService: DataProviderService
 
