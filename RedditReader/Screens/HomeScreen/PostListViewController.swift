@@ -92,13 +92,14 @@ extension PostListViewController {
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let dataCount = self.datasourceArray!.count
         let visibleCellsCount = tableView.visibleCells.count
+        let rowNumberToRequestNextChunk = dataCount - 2
 
-        guard visibleCellsCount < dataCount && indexPath.row == dataCount - 2 else {
+        guard visibleCellsCount < dataCount && indexPath.row == rowNumberToRequestNextChunk else {
             return
         }
 
-        let userdefaultsStorage = UserDefaultsStorageService()
-        let cacheDataService = CacheDataService(dataStorage: userdefaultsStorage)
+        let userDefaultsStorage = UserDefaultsStorageService()
+        let cacheDataService = CacheDataService(dataStorage: userDefaultsStorage)
 
         cacheDataService.getTopPosts(limit: 50, completion: { newPosts in
             self.datasourceArray! += newPosts!

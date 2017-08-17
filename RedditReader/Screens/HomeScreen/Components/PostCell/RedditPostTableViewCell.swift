@@ -21,7 +21,7 @@ class RedditPostTableViewCell: UITableViewCell {
 
     @IBOutlet weak var postTimeLabel: UILabel!
 
-    @IBOutlet weak var commetsCountLabel: UILabel!
+    @IBOutlet weak var commentsCountLabel: UILabel!
 
     var thumbDownloadTask: URLSessionDataTask?
 
@@ -29,7 +29,7 @@ class RedditPostTableViewCell: UITableViewCell {
         self.postModel = postModel
         postTitleLabel.text = postModel.title
         postAuthorLabel.text = postModel.author
-        commetsCountLabel.text = "\(postModel.commentsCount ?? 0) comments"
+        commentsCountLabel.text = "\(postModel.commentsCount ?? 0) comments"
         postTimeLabel.text = postModel.dateString
 
         guard
@@ -58,5 +58,4 @@ class RedditPostTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         thumbDownloadTask?.cancel()
     }
-
 }
