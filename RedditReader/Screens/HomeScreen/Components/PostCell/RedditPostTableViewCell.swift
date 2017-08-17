@@ -23,15 +23,7 @@ class RedditPostTableViewCell: UITableViewCell {
 
     @IBOutlet weak var commetsCountLabel: UILabel!
 
-    @IBAction func showFullPhoto(_ sender: Any) {
-        delegate?.showFullPhotoForPost(postModel)
-    }
-
     var thumbDownloadTask: URLSessionDataTask?
-
-    override func prepareForReuse() {
-        thumbDownloadTask?.cancel()
-    }
 
     func fillWithModel(_ postModel: PostModel) {
         self.postModel = postModel
@@ -51,11 +43,20 @@ class RedditPostTableViewCell: UITableViewCell {
                 return
             }
 
-            DispatchQueue.main.async() {
+            DispatchQueue.main.async {
                 self.thumbButton.setImage(UIImage(data: data), for: .normal)
             }
         }
 
         thumbDownloadTask?.resume()
     }
+
+    @IBAction func showFullPhoto(_ sender: Any) {
+        delegate?.showFullPhotoForPost(postModel)
+    }
+
+    override func prepareForReuse() {
+        thumbDownloadTask?.cancel()
+    }
+
 }

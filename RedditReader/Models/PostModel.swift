@@ -70,8 +70,7 @@ class PostModel: NSObject, NSCoding {
         coder.encode(imageUrl, forKey: "imageUrl")
         coder.encode(commentsCount, forKey: "commentsCount")
         coder.encode(postUrl, forKey: "postUrl")
-        if let timeIntervalSince1970 = date?.timeIntervalSince1970 {
-            coder.encode(timeIntervalSince1970, forKey: "created_utc")
-        }
+        coder.encode(date?.timeIntervalSince1970, forKey: "created_utc")
     }
+
 }

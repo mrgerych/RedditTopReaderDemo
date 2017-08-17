@@ -9,15 +9,19 @@
 import Foundation
 
 class DataUtils {
+
     static func postsFromListData(_ data: Data?) -> [PostModel]? {
         do {
             if let data = data,
                let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
                let responseData = json["data"] as? [String: Any],
                let postsArray = responseData["children"] as? [[String: Any]] {
-                return postsArray.map({ (postData) -> PostModel in
-                    return PostModel(sourceDictionary: postData["data"] as! [String: Any])
-                })
+                return postsArray.flatMap { postData in
+                    guard let sourceDictionary =  postData["data"] as? [String: Any] else {
+                        return nil
+                    }
+                    return PostModel(sourceDictionary: sourceDictionary)
+                }
             } else {
                 return nil
             }
@@ -25,4 +29,5 @@ class DataUtils {
             return nil
         }
     }
+
 }

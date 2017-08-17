@@ -9,5 +9,7 @@
 import Foundation
 
 protocol DataProviderService {
+
     func getTopPosts(limit: Int, completion: @escaping (([PostModel]?) -> Void))
+
 }

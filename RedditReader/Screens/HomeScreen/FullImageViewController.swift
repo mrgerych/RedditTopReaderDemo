@@ -8,26 +8,16 @@
 
 import UIKit
 
-class FullImageViewController: WebPageViewController {
-    // Nothing to save while using webview to show images
-    func storeImageToGallery(image: UIImage) {
-        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
-    }
-
-    func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-        if let _ = error {
-            print("error")
-        } else {
-            print("success")
-        }
-    }
-}
+// Nothing to save while using webview to show images
+class FullImageViewController: WebPageViewController {}
 
 extension FullImageViewController: PostModelPresenter {
+
     func presentDataForPost(_ post: PostModel) {
         guard let postImageUrlString = post.imageUrl else {
             return
         }
         self.urlToLoad = URL(string: postImageUrlString)
     }
+
 }

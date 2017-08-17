@@ -9,6 +9,9 @@
 import Foundation
 
 protocol DataStorageService {
+
     func retrievePostsFromStorage() -> [PostModel]?
+
     func savePostsToStorage(_ posts: [PostModel])
+
 }

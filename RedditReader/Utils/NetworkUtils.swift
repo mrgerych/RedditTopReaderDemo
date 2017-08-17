@@ -11,6 +11,7 @@ import SystemConfiguration
 import UIKit
 
 class NetworkUtils {
+
     static func isInternetAvailable() -> Bool {
         var zeroAddress = sockaddr_in()
         zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
@@ -23,7 +24,7 @@ class NetworkUtils {
         }
 
         var flags = SCNetworkReachabilityFlags()
-        if !SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) {
+        if let defaultRouteReachability = defaultRouteReachability, !SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags) {
             return false
         }
         let isReachable = flags.contains(.reachable)
@@ -39,4 +40,5 @@ class NetworkUtils {
 
         return UIApplication.shared.canOpenURL(url)
     }
+
 }
