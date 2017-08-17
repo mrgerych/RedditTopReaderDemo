@@ -58,4 +58,5 @@ class RedditPostTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         thumbDownloadTask?.cancel()
     }
+
 }

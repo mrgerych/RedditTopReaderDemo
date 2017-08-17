@@ -13,6 +13,8 @@ class PostListViewController: UITableViewController {
     let showPostSegueName = "showPostWebPage"
     let showPostImageSegueName = "showFullImage"
 
+    let rowOffsetToLoadNextChunk = 2
+
     var datasourceArray: [PostModel]?
     var presentingPostModel: PostModel?
     var postsRefreshControl: UIRefreshControl!
@@ -20,7 +22,7 @@ class PostListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        prepateDataService()
+        prepareDataService()
         prepareTableView()
         updateData()
     }
@@ -30,10 +32,10 @@ class PostListViewController: UITableViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
 
-    func prepateDataService() {
-        let userdefaultsStorage = UserDefaultsStorageService()
-        let networkDataService = NetworkDataService(storageService: userdefaultsStorage)
-        let cacheDataService = CacheDataService(dataStorage: userdefaultsStorage)
+    func prepareDataService() {
+        let userDefaultsStorage = UserDefaultsStorageService()
+        let networkDataService = NetworkDataService(storageService: userDefaultsStorage)
+        let cacheDataService = CacheDataService(dataStorage: userDefaultsStorage)
 
         dataService = GeneralDataService(networkDataService: networkDataService,
                 cacheDataService: cacheDataService)
@@ -92,9 +94,8 @@ extension PostListViewController {
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let dataCount = self.datasourceArray!.count
         let visibleCellsCount = tableView.visibleCells.count
-        let rowNumberToRequestNextChunk = dataCount - 2
 
-        guard visibleCellsCount < dataCount && indexPath.row == rowNumberToRequestNextChunk else {
+        guard visibleCellsCount < dataCount && indexPath.row == dataCount - rowOffsetToLoadNextChunk else {
             return
         }
 
