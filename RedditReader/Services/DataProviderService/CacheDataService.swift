@@ -26,4 +26,5 @@ class CacheDataService: DataProviderService {
             completion(posts)
         }
     }
+
 }

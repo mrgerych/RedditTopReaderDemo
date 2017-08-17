@@ -30,7 +30,7 @@ class WebPageViewController: UIViewController {
     }
 
     override func viewWillLayoutSubviews() {
-        if (!wasViewLoaded) {
+        if !wasViewLoaded {
             wasViewLoaded = true
 
             let viewsDict: [String: Any] = ["postWebView": postWebView]
@@ -41,5 +41,5 @@ class WebPageViewController: UIViewController {
             view.addConstraints(verticalConstraints)
         }
     }
-}
 
+}

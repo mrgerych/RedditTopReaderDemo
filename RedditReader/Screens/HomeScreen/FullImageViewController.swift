@@ -9,6 +9,7 @@
 import UIKit
 
 class FullImageViewController: WebPageViewController {
+
     // Nothing to save while using webview to show images
     func storeImageToGallery(image: UIImage) {
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
@@ -21,13 +22,16 @@ class FullImageViewController: WebPageViewController {
             print("success")
         }
     }
+
 }
 
 extension FullImageViewController: PostModelPresenter {
+
     func presentDataForPost(_ post: PostModel) {
         guard let postImageUrlString = post.imageUrl else {
             return
         }
         self.urlToLoad = URL(string: postImageUrlString)
     }
+
 }

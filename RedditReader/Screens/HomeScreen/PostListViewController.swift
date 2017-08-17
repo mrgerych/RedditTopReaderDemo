@@ -52,7 +52,7 @@ class PostListViewController: UITableViewController {
     @objc func updateData() {
         dataService?.getTopPosts(limit: 50) { [unowned self] posts in
             self.datasourceArray = posts
-            DispatchQueue.main.async() {
+            DispatchQueue.main.async {
                 self.tableView.reloadData()
                 self.refreshControl?.endRefreshing()
             }
@@ -67,9 +67,11 @@ class PostListViewController: UITableViewController {
 
         postModelPresenter.presentDataForPost(presentingPostModel)
     }
+
 }
 
 extension PostListViewController {
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.datasourceArray?.count ?? 0
     }
@@ -98,7 +100,7 @@ extension PostListViewController {
         let userdefaultsStorage = UserDefaultsStorageService()
         let cacheDataService = CacheDataService(dataStorage: userdefaultsStorage)
 
-        cacheDataService.getTopPosts(limit: 50, completion: { (newPosts) in
+        cacheDataService.getTopPosts(limit: 50, completion: { newPosts in
             self.datasourceArray! += newPosts!
             let indexPaths = (dataCount - newPosts!.count..<dataCount)
                     .map {
@@ -109,11 +111,14 @@ extension PostListViewController {
             tableView.endUpdates()
         })
     }
+
 }
 
 extension PostListViewController: RedditPostCellDelegate {
+
     func showFullPhotoForPost(_ post: PostModel) {
         presentingPostModel = post
         self.performSegue(withIdentifier: showPostImageSegueName, sender: self)
     }
+
 }

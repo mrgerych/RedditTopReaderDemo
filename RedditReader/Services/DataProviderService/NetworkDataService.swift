@@ -20,13 +20,14 @@ class NetworkDataService: DataProviderService {
         let url = URL(string: "\(urlString)?limit=\(limit)")!
         let request = URLRequest(url: url)
         let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
-            let posts = DataUtils.postsFromListData(data)
-            guard let _posts = posts else {
+            guard let posts = DataUtils.postsFromListData(data) else {
+                completion(nil)
                 return
             }
-            self.storageService.savePostsToStorage(_posts)
+            self.storageService.savePostsToStorage(posts)
             completion(posts)
         })
         task.resume()
     }
+
 }

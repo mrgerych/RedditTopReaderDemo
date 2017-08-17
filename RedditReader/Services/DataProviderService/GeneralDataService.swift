@@ -33,5 +33,5 @@ class GeneralDataService: DataProviderService {
             cacheDataService.getTopPosts(limit: limit, completion: completion)
         }
     }
-}
 
+}

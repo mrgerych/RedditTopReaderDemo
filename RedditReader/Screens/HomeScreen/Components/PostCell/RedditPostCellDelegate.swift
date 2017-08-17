@@ -9,5 +9,7 @@
 import Foundation
 
 protocol RedditPostCellDelegate: class {
+
     func showFullPhotoForPost(_ post: PostModel)
+
 }

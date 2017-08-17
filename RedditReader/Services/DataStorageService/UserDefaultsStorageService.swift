@@ -24,4 +24,5 @@ class UserDefaultsStorageService: DataStorageService {
         UserDefaults.standard.set(encodedData, forKey: storeKey)
         UserDefaults.standard.synchronize()
     }
+
 }

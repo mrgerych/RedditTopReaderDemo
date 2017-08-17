@@ -8,14 +8,15 @@
 
 import UIKit
 
-class PostWebPageViewController: WebPageViewController {
-}
+class PostWebPageViewController: WebPageViewController {}
 
 extension PostWebPageViewController: PostModelPresenter {
+
     func presentDataForPost(_ post: PostModel) {
         guard let postWebPageUrlString = post.postUrl else {
             return
         }
         self.urlToLoad = URL(string: postWebPageUrlString)
     }
+
 }

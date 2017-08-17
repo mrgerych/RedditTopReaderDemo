@@ -9,6 +9,7 @@
 import Foundation
 
 extension NSObject {
+
     var className: String {
         return String(describing: type(of: self))
     }
@@ -16,4 +17,5 @@ extension NSObject {
     class var className: String {
         return String(describing: self)
     }
+
 }

@@ -6,5 +6,7 @@
 import Foundation
 
 protocol PostModelPresenter: class {
+
     func presentDataForPost(_ post: PostModel)
+
 }

@@ -9,7 +9,7 @@
 import Foundation
 
 class DateUtils {
-    // Sorry this part from stackoverflow
+
     static func timeAgoSinceDate(_ date: Date, numericDates: Bool = false) -> String {
         let components = getDateComponents(date: date)
 
@@ -77,4 +77,5 @@ class DateUtils {
         let components = calendar.dateComponents(unitFlags, from: earliest, to: latest)
         return components
     }
+
 }

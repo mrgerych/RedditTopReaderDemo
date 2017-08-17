@@ -51,11 +51,12 @@ class RedditPostTableViewCell: UITableViewCell {
                 return
             }
 
-            DispatchQueue.main.async() {
+            DispatchQueue.main.async {
                 self.thumbButton.setImage(UIImage(data: data), for: .normal)
             }
         }
 
         thumbDownloadTask?.resume()
     }
+
 }
