@@ -12,7 +12,7 @@ class TopPostsDataService: DataProviderService {
     let networkDataService: DataProviderService
     let cacheDataService: DataProviderService
 
-    var initiallyLoadedFromCache = false
+    var showedInitialCache = false
 
     init(networkDataService: DataProviderService, cacheDataService: DataProviderService) {
         self.networkDataService = networkDataService
@@ -20,8 +20,8 @@ class TopPostsDataService: DataProviderService {
     }
 
     func getTopPosts(limit: Int, completion: @escaping (([PostModel]?) -> Void)) {
-        guard initiallyLoadedFromCache else {
-            initiallyLoadedFromCache = true
+        guard showedInitialCache else {
+            showedInitialCache = true
             cacheDataService.getTopPosts(limit: limit, completion: completion)
             networkDataService.getTopPosts(limit: limit, completion: completion)
             return
